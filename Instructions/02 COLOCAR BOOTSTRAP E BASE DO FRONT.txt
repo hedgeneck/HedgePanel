@@ -1,0 +1,6 @@
+BOOTSTRAP
+- Copia o código blog, commit 'Aula 2', copiar a parte de cima do css e depois a parte de baixo
+- Colocar a main.css, tem que copiar o código do github e criar arquivo
+- colar o navigation snippet
+
+- snippets fornecidos pelo Corey Schaffer em https://github.com/CoreyMSchafer/code_snippets/tree/master/
