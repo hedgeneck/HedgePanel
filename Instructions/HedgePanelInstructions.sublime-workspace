@@ -1,0 +1,351 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bs",
+				"bs:navbar-brand\tnavbar-brand"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Snippet: me",
+				"Snippet: meussnippets"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": true,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": true,
+		"status_bar_visible": true
+	},
+	"expanded_folders":
+	[
+		"/C/Projetos/HedgePanel/Instructions"
+	],
+	"file_history":
+	[
+		"/C/Projetos/HedgePanel/Instructions/01 BASICAO.txt",
+		"/C/Projetos/blog/Instructions/AULA 05 - ESTRUTURANDO COMO PACKAGE.txt",
+		"/C/Projetos/blog/Instructions/AULA 04 - DATABASE WITH SQLALCHEMY.txt",
+		"/C/Projetos/blog/Instructions/AULA 01 - BASICAO.txt",
+		"/C/Projetos/blog/Instructions/AULA 02 - TEMPLATES.txt",
+		"/C/Projetos/blog/Instructions/AULA 03 - FORMS AND USER INPUT.txt",
+		"/C/Projetos/blog/Instructions/01 BASICAO.txt",
+		"/C/Projetos/RiskPanel/Instructions/07 RODANDO APP FLASK LOCALMENTE.txt",
+		"/C/Projetos/RiskPanel/Instructions/08 CRIANDO E USANDO GITHUB.txt",
+		"/C/Projetos/RiskPanel/Instructions/09 MODELS E BANCO DE DADOS.txt",
+		"/C/Projetos/RiskPanel/Instructions/09 MODELS.txt",
+		"/C/Projetos/FlaskApp/run.py",
+		"/C/Projetos/FlaskApp/app/__init__.py",
+		"/C/Projetos/FlaskApp/app/controllers/__init__.py",
+		"/C/Projetos/FlaskApp/app/models/__init__.py",
+		"/C/Projetos/FlaskApp/app.py",
+		"/C/Projetos/FlaskApp/env/Scripts/activate.bat",
+		"/C/Projetos/RiskPanel/Instructions/06 DESENVOLVENDO BOOTSTRAP.txt",
+		"/C/Projetos/RiskPanel/Instructions/05 DESENVOLVENDO O SITE.txt",
+		"/C/Projetos/RiskPanel/Instructions/04 ACESSANDO PUTTY.txt",
+		"/C/Projetos/RiskPanel/Instructions/03 INSTALAÇÃO DO SERVIDOR.txt",
+		"/C/Projetos/RiskPanel/Instructions/01 INSTRUCTIONS.txt",
+		"/C/Projetos/RiskPanel/Instructions/02 QUESTÕES SOBRE ESCOLHA SERVIDOR.txt",
+		"/C/Projetos/RiskPanel/Instructions/02 QUESTÕES SOBRE SERVIDOR.txt",
+		"/C/Projetos/RiskPanel/Instructions/01 PRELIMINARES",
+		"/C/Projetos/lectures_quantopian/aula_02.txt",
+		"/C/Projetos/lectures_quantopian/aula_01.txt",
+		"/C/Projetos/quant_research/Econometria.txt",
+		"/C/Projetos/quant_research/012 - Orientacao.txt",
+		"/C/Projetos/quant_research/Quant books.txt",
+		"/C/Projetos/quant_research/samy.txt",
+		"/C/Projetos/quant_research/HAR.txt",
+		"/C/Projetos/quant_research/Realized Volatility.txt",
+		"/C/Projetos/quant_research/Conta Exterior.txt",
+		"/C/Projetos/quant_research/Estatistica Matematica.txt",
+		"/C/Projetos/quant_research/Time Series Analysis.txt",
+		"/C/Projetos/quant_research/Martingales property.txt",
+		"/C/Projetos/quant_research/Principais Forums Quant.txt",
+		"/C/Projetos/quant_research/Time Series.txt",
+		"/C/Projetos/quant_research/005 - Players do mundo quant.txt",
+		"/C/Projetos/quant_research/006 - The Quants.txt",
+		"/C/Projetos/quant_research/008 - Renaissance.txt",
+		"/C/Projetos/quant_research/009 - Cointegration.txt",
+		"/C/Projetos/quant_research/HFT.txt",
+		"/C/Projetos/quant_research/Programação.txt",
+		"/C/Projetos/quant_research/Factor Investing.txt",
+		"/C/Projetos/quant_research/Options.txt",
+		"/C/Projetos/quant_research/Analise Funcional.txt",
+		"/C/Projetos/quant_research/Statistical Learning.txt",
+		"/C/Projetos/quant_research/Probability and measure.txt",
+		"/C/Projetos/quant_research/Medida e Integracao.txt",
+		"/C/Projetos/quant_research/Vol é Risco.txt",
+		"/C/Projetos/quant_research/Origem Black Swan.txt",
+		"/C/Projetos/quant_research/Stochastic processes.txt",
+		"/C/Projetos/quant_research/Análise Real.txt",
+		"/C/Projetos/quant_research/teorema do ponto fixo.txt",
+		"/C/Projetos/quant_research/Markov property.txt",
+		"/C/Projetos/quant_research/Orientados Scheinkman.txt",
+		"/C/Projetos/quant_research/Espaços L2.txt",
+		"/C/Projetos/quant_research/empresa merposa",
+		"/C/Projetos/quant_research/010 - Kalman Filter.txt",
+		"/C/Projetos/quant_research/010 - Clive Granger.txt",
+		"/C/Projetos/quant_research/007 - Inside the Black Box.txt",
+		"/C/Projetos/quant_research/002 - Robert Engle.txt",
+		"/C/Projetos/quant_research/004 - Post do Cerize.txt",
+		"/C/Projetos/quant_research/003 - ARCH.txt",
+		"/C/Projetos/quant_research/001 - José Scheinkman.txt",
+		"/C/Projetos/Timeline/gulpfile.js",
+		"/C/Projetos/Timeline/instructions/23 SASS.txt",
+		"/C/Projetos/Timeline/instructions/22 INSTALAR GULP.txt",
+		"/C/Projetos/Timeline/instructions/21 VISUALIZAÇÃO DE TIMELINES.txt",
+		"/C/Projetos/Timeline/instructions/19 REAJUSTAR O FRONT END.txt",
+		"/C/Projetos/Timeline/routes/web.php",
+		"/C/Projetos/Timeline/resources/views/testes/teste2.blade.php",
+		"/C/Projetos/Timeline/resources/views/testes/teste.blade.php",
+		"/C/Projetos/Timeline/resources/views/welcome.blade.php",
+		"/C/Projetos/Timeline/resources/views/layout.blade.php",
+		"/C/Projetos/Timeline/instructions/20 GOOGLE ANALYTICS.txt",
+		"/C/Projetos/Timeline/app/Http/Controllers/TimelinesController.php",
+		"/C/Projetos/Timeline/instructions/15 DATABASE.txt",
+		"/C/Projetos/Timeline/instructions/07 EXPORTAR PARA GITHUB.txt",
+		"/C/Projetos/Timeline/app/Http/Controllers/Auth/RegisterController.php",
+		"/C/Projetos/Timeline/instructions/14 DEPLOY.txt",
+		"/C/Users/Gustavo/AppData/Local/Temp/fz3temp-2/web.php",
+		"/C/Projetos/Timeline/instructions/16 ACESSO SSH.txt",
+		"/C/Projetos/Timeline/instructions/17 ACESSO MINGW.txt",
+		"/C/Projetos/Timeline/instructions/18 USAR VIM.txt",
+		"/C/Projetos/Timeline/config/app.php",
+		"/C/Projetos/Timeline/resources/views/layouts/app.blade.php",
+		"/C/Projetos/Timeline/.env",
+		"/C/Projetos/Timeline/instructions/13 CUIDAR DA PARTE DE COMPARAR.txt",
+		"/C/Projetos/Timeline/app/Http/Controllers/CompararController.php",
+		"/C/Projetos/Timeline/resources/views/comparar/show.blade.php",
+		"/C/Projetos/Timeline/resources/views/comparar/index.blade.php",
+		"/C/Projetos/Timeline/vendor/laravel/framework/src/Illuminate/Http/Request.php",
+		"/C/Projetos/Timeline/vendor/laravel/framework/src/Illuminate/Contracts/Support/Arrayable.php",
+		"/C/Projetos/Timeline/vendor/symfony/http-foundation/Request.php",
+		"/C/Projetos/Timeline/instructions/12 CRIAR REGISTRATION SYSTEM.txt",
+		"/C/Projetos/Timeline/database/migrations/2019_02_03_205930_create_timelines_table.php",
+		"/C/Projetos/Timeline/app/Http/Controllers/Auth/LoginController.php",
+		"/C/Projetos/Timeline/vendor/laravel/framework/src/Illuminate/Support/Facades/Gate.php",
+		"/C/Projetos/Timeline/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php",
+		"/C/Projetos/Timeline/app/Http/Controllers/HomeController.php",
+		"/C/Projetos/Timeline/app/Http/Controllers/PontosController.php",
+		"/C/Projetos/Timeline/app/Ponto.php",
+		"/C/Projetos/Timeline/vendor/laravel/framework/src/Illuminate/Support/Facades/App.php",
+		"/C/Projetos/Timeline/app/Http/Middleware/CheckForMaintenanceMode.php",
+		"/C/Users/Gustavo/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/Gustavo/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Projetos/Timeline/resources/views/timelines/edit.blade.php",
+		"/C/Projetos/Timeline/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/C/Projetos/test/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/C/Projetos/test/app/Http/Controllers/Auth/RegisterController.php",
+		"/C/Projetos/test/routes/web.php",
+		"/C/Projetos/Timeline/resources/views/pontos/edit.blade.php",
+		"/C/Projetos/Timeline/bootstrap/app.php",
+		"/C/Projetos/Timeline/instructions/11 ENTRANHAS DO LARAVEL.txt",
+		"/C/Projetos/Timeline/app/Console/Kernel.php",
+		"/C/Projetos/Timeline/routes/console.php",
+		"/C/Projetos/Timeline/app/Http/Kernel.php",
+		"/C/Projetos/Timeline/instructions/10 REWRITTING THE PROGRAM INTERFACE TO ADD RELATIONSHIP.txt",
+		"/C/Projetos/Timeline/app/Timeline.php",
+		"/C/Projetos/Timeline/resources/views/timelines/show.blade.php",
+		"/C/Projetos/Timeline/resources/views/pontos/create.blade.php",
+		"/C/Users/Gustavo/Desktop/OPTRADE/Cursos/The PHP Practitioner/04/index.php",
+		"/C/Users/Gustavo/Desktop/OPTRADE/Cursos/The PHP Practitioner/02/index.php",
+		"/C/Projetos/Timeline/resources/views/timelines/index.blade.php",
+		"/C/Projetos/Timeline/database/migrations/2019_01_27_192753_create_pontos_table.php"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"input",
+			"Illuminate",
+			"PontosController",
+			"listing",
+			"resource",
+			"ponto",
+			"data",
+			"ponto",
+			"pontos"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "HedgePanelInstructions.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"i/h/reque",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Http\\Request.php"
+			],
+			[
+				"request",
+				"vendor\\symfony\\http-foundation\\Request.php"
+			],
+			[
+				"Gate",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Gate.php"
+			],
+			[
+				"12",
+				"instructions\\12 CRIAR REGISTRATION SYSTEM.txt"
+			],
+			[
+				"pon",
+				"app\\Ponto.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Projetos\\Timeline\\Timelines.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 798.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		]
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 339.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 1
+	}
+}

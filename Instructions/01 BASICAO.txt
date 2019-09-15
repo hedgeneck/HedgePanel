@@ -1,0 +1,25 @@
+- Antes de criar o diretório no computador, criar o projeto no github
+
+- Depois de criado o repositório no site, é preciso primeiramente copiar o código do site para a pasta. Usar esse procedimento quando estiver criando
+Vai até a pasta fora do código
+> git init
+> git clone https://github.com/hedgeneck/HedgePanel.git
+
+- Criar pasta de Instructions
+- Criar Projeto para Instructions
+	Como não tem uma opção de New Project, tem que dar um Close Project, Add Folder to Project e depois Save Project As
+
+- Criar Projeto para o HedgePanel
+	- Criar a estrutura básica do projeto:
+	run.py
+	pasta package com mesmo nome do projeto
+	pasta static
+	pasta templates
+	__init__.py, models.py, forms.py, routes.py
+	layout.html, home.html, about.html
+
+- Criar ambiente virtual
+> py -m venv env
+> env\Scripts\activate
+> pip install flask
+> flask run
