@@ -1,0 +1,101 @@
+- Vamos agora cuidar de criar um banco de dados e um script R que carrega o banco de dados
+- Antes de tudo vamos dar uma atualizada no R
+https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/
+> install.packages("installr")
+> library(installr)
+> updateR()
+
+- Precisamos instalar alguns pacotes
+> install.packages("RSQLite")
+> install.packages("bizdays")
+- O rlogging por enquanto deixa quieto
+
+- Vamos precisar montar o banco de dados no SQLiteStudio
+	0) Montar banco de dados em SQLiteStudio
+
+- Basicamente vamos precisar de 4 pedaços de código.
+	1) ler o dado de um dia na internet
+	2) carregar o dado lido de um dia pro banco de dados
+	3) 4 um pedaço de código que faça um loop pra ir adicionando nos n ultimos dias, iterando
+	4) um pedaço de código que carregue o banco de dados e atualize os dados desejados
+
+
+### CRIANDO O BANCO DE DADOS DE CDI (0)
+
+- Antes de pensar em script de R, o banco de dados tem que já estar criado com o SCHEMA pronto
+	- Vai em add database
+	- nome: CDI_CETIP
+		- id, INTEGER, primary key auto-increment
+		- data, DATE, unique, not null (unique pois é um CDI por dia, not null pq toda entry tem que ter)
+		- valor, REAL, not null (não precisa unique pois valores podem repetir)
+- Resulta em
+	CREATE TABLE CDI_CETIP (
+	    id    INTEGER PRIMARY KEY AUTOINCREMENT,
+	    data  DATE    UNIQUE
+	                  NOT NULL,
+	    valor REAL    NOT NULL
+	);
+
+se quiser remover todos valores guardados em uma tabela, abre comando de SQL 
+> delete from cdi_cetip
+	(o nome da tabela não leva em conta maiúsculas)
+
+###
+
+
+### Arquivo ler.CETIP.CDI.R ### (1)
+
+- Antes de carregar o banco de dados, fizemos uma função para ler os valores de CDI da CETIP
+
+dt = as.Date("2018-07-17", "%Y-%m-%d") # transforma string numa data com uma determinada máscara
+
+ler.CETIP.CDI(dt)
+
+ler.CETIP.CDI = function(dt){
+  #url = "ftp://ftp.cetip.com.br/MediaCDI/20121218.txt" # esse é um exemplo de endereço do ftp
+
+  stopifnot(is(dt,"Date"), length(dt) == 1)
+  # cada um dos parâmetros é uma condição OU... para se alguma dessas seja verdade
+
+  url = format(dt,"ftp://ftp.cetip.com.br/MediaCDI/%Y%m%d.txt")
+  # format faz várias coisas, uma delas é formatar uma string com valores de uma data com uma máscara
+
+  txt = readLines(url)
+  # acho que esse comando faz requisição do endereço
+
+  txt = gsub(" ", "", txt)
+  # gsub basicamente substitui coisas de uma string. vai transformar todos espaços em nada
+
+  cdi = as.numeric(txt)/100
+  return(cdi)
+}
+
+library(bizdays)
+cal = create.calendar("ANBIMA", holidaysANBIMA, weekdays=c("saturday", "sunday"))
+criou o calendário "ANBIMA", que vai ser passado como parâmetro para bizseq. Engraçado como cal não é mais usado
+
+datas = bizdays::bizseq(as.Date("2018-07-01"), as.Date("2018-07-19"), "ANBIMA")
+# se não passar o calendário vai incluir até os dias de semana
+
+for(i in 1:length(datas)){
+  dt = datas[i]
+  cdi = ler.CETIP.CDI(dt)
+  print(dt)
+  print(cdi)
+}
+
+
+
+- colocamos o arquivo de carga de banco de dados dentro de /HedgePanel/R
+# PACOTE DE BANCO DE DADOS
+library(RSQLite)
+# PACOTE DE DIAS UTEIS
+library(bizdays)
+cal = bizdays::calendars() # CRIANDO CALENDARIO BRAZIL/ANBIMA (PADRAO)
+# PACOTE DE LOGS: rlogging
+#install.packages("~/BDM/Packages/rlogging_1.1.tar.gz", repos = NULL, type = "win.binary")
+library(rlogging)
+library(mailR)
+setwd("/Users/Rech/Documents/FinanÃ§as/BDM")
+
+##################### FUNCOES UTEIS #########

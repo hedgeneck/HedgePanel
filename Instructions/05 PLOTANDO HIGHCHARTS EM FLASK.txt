@@ -1,0 +1,119 @@
+- A primeira referência a seguir é a do grande sentdex
+https://www.youtube.com/watch?v=9Ic79kOBj_M
+
+- No vídeo ele admite que o código ele tirou de :, que é onde nos basearemos
+https://gist.github.com/vgoklani/5347161
+
+- Também tem um post mais ou menos útil em
+https://songhuiming.github.io/pages/2016/08/18/highcharts-in-python-flask/
+
+- O site do highcharts é bonito pra caralho, dá uma olhada depois para copiar alguma coisa
+
+- Basicamente segui o código do vgoklani e deu certo, com uma pequena ressalva : não coloquei os sources logo abaixo do script do highcharts e sim no final da página
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+			<script src="http://code.highcharts.com/highcharts.js"></script>
+			<script src="../static/js/main.js"></script>
+
+- O código acima foi modificado pois o jquery usado foi o original do arquivo layout e portanto ficou assim
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="../static/js/main.js"></script>
+
+ - Ainda estou tentando entender a questão dos height e widths do div e do passado no routes
+
+ - Analisar estrutura de sites com highcharts
+
+ TODO: gerar dados aleatórios no python 
+
+
+O código .js ficou
+
+$(document).ready(function() {
+	$(chart_id).highcharts({
+		chart: chart,
+		title: title,
+		xAxis: xAxis,
+		yAxis: yAxis,
+		series: series
+	});
+});
+
+$(document).ready(function() {
+isso quer dizer que: quando o documento html ficar pronto, carregue a seguinte função
+
+$(chart_id).highcharts({
+me parece rodar a função highcharts no elemento com id chart_id
+na verdade o chart_id é uma string definida lá no div da html
+def highcharts_example(chartID = 'chart_id', chart_type = 'bar', chart_height = 500):
+apesar de ser uma string, esse id é referenciado no javascript do highcharts sem aspas
+
+por isso vamos fazer uma função highcharts para cada id.
+
+
+### GERAR DADOS ALEATÓRIOS EM PYTHON PARA COLOCAR NO FLASK ###
+
+- Existem duas maneiras de sair testando código em python sem precisar testar dentro do site em flask:
+	- Vai no command, digita > python e sai testando código
+	- cria um arquivo teste.py, vai fazendo o script e testa pelo command com > python teste.py
+
+TODO: aprender a domesticar o highcharts
+	porque ele não ajusta tamanho?
+	como fica tamanho em dispositivos?
+	fazer tamanho relativo?
+	qual diferença entre mexer no tamanho do div e no algoritmo do route?
+	engraçado como o debug não atualiza o server depois de algumas mudanças
+
+BUG: Eu mexia no javascript e alguma coisa mudava, mexia no template e nada mudava
+	Na verdade eu não estava renderizando certo
+	return render_template('highcharts_example.html', chartID
+
+- Notar como as configurações do código javascript são passadas de python para js
+	chart = {"renderTo": chartID, "type": chart_type, "height": chart_height,}
+		
+		// Python
+		series = [{"name": 'Label1', "data": y}]
+		title = {"text": 'CDI média diária'}
+		xAxis = {"type": 'datetime'}
+		yAxis = {"title": {"text": 'yAxis Label'}}
+
+		// código html
+		<script>
+			var chart_id = {{ chartID|safe }}
+			var series = {{ series|safe }}
+			var title = {{ title|safe }}
+			var xAxis = {{ xAxis|safe }}
+			var yAxis = {{ yAxis|safe }}
+			var chart = {{ chart|safe }}
+		</script>
+
+		// código js
+		chart: chart,
+		title: title,
+		xAxis: xAxis,
+		yAxis: yAxis,
+		series: series
+
+- Deu certo fazer o gráfico rodar como datetime!
+	O que precisava era
+	- tirar o atributo "categories" do objeto xAxis
+	- passar os "data" como array de arrays, ao invés de um único array
+	y = [[1167609600000,0.7537],[1167696000000,0.7537],[1167782400000,0.7559]]
+	- a data deve ser passada em formato ...
+	- colocar o atributo "type": 'datetime' em xAxis
+
+# Para fazer um gráfico rodar como dat
+
+
+### UMA REVISÃOZINHA DE JAVASCRIPT
+
+- A melhor fonte de javascript é:
+https://www.w3schools.com/js/js_intro.asp
+	vale muito a pena passar o olho! uns 15 segundos em cada page
+
+var length = 16;                               // Number
+var lastName = "Johnson";                      // String
+var x = {firstName:"John", lastName:"Doe"};    // Object
+var cars = ["Saab", "Volvo", "BMW"];		   // Array of strings
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"}; // Object
+var cars = new Array("Saab", "Volvo", "BMW"); // Array
+

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+		<h1>Alo Mundo!</h1>
+		<div id={{ chartID|safe }} class="chart" style="height: 500px; width: 500px"></div>
+		<script>
+			var chart_id = {{ chartID|safe }}
+			var series = {{ series|safe }}
+			var title = {{ title|safe }}
+			var xAxis = {{ xAxis|safe }}
+			var yAxis = {{ yAxis|safe }}
+			var chart = {{ chart|safe }}
+		</script>
+{% endblock content %}

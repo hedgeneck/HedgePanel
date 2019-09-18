@@ -1,0 +1,124 @@
+- Como já criamos o banco de dados na hora que carregamos ele com um script R, precisamos apenas conectar a ele, sem executar comandos como db init, db migrate, etc
+
+- O banco de dados criado se encontra em /Hedgeneck/R/storage.db
+	acabou que foi bem fácil atualizar para /Hedgeneck/Hedgeneck/storage.db
+
+- Começando então a aventura de conectar ao banco de dados existente e baixar alguns dados, primeiramente precisamos iniciar a conexão ao banco de dados no arquivo __init.py__
+
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'dbfd46992a739efa9b8f10ebc97338b4'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db'
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+- em seguida devemos criar um models.py no mesmo diretório do init.py
+- dentro de models.py, importa o db que foi inicializado
+
+- Lembrar de alguns dados básicos sobre o banco de dados que foi criado
+	- nome: CDI_CETIP
+		- id, INTEGER, primary key auto-increment
+		- data, DATE, unique, not null (unique pois é um CDI por dia, not null pq toda entry tem que ter)
+		- valor, REAL, not null (não precisa unique pois valores podem repetir)
+- Resulta em
+	CREATE TABLE CDI_CETIP (
+	    id    INTEGER PRIMARY KEY AUTOINCREMENT,
+	    data  DATE    UNIQUE
+	                  NOT NULL,
+	    valor REAL    NOT NULL
+	);
+
+* Perguntar não ofende: a tabela CDI_CETIP precisa de um id? a data poderia ser uma primary_key?
+* No model do sqlalchemy colocamos primary_key=True mas não botamos autoincrement. Tem problema?
+
+- Uma dúvida que surgiu é que tipo de Column data em flask sqlalchemy é o float..
+https://stackoverflow.com/questions/30137806/where-can-i-find-a-list-of-the-flask-sqlalchemy-column-types-and-options
+a resposta ficou: Numeric
+* Notei que na resposta tem REAL e também Numeric. Quando tiver tempo pesquisa a diferença.
+
+- O resultado ficou:
+class CDI_CETIP(db.Model):
+	__tablename__ = "CDI_CETIP"
+
+	id = db.Column(db.Integer, primary_key=True)
+	data = db.Column(db.DateTime, unique=True, nullable=False)
+	valor = db.Column(db.Numeric, nullable=False)
+
+	def __repr__(self):
+		return f"CDI_CETIP('{self.data}': '{self.valor}')"
+
+- Para ver se funcionou seria legal testar dentro do Python.
+- Para testar o banco de dados do site em flask, não esquecer de digitar > python com o environment ativado, pois o Flask só está instalado no environment
+>>> python
+>>> from HedgePanel import db
+- Não esquecer de adicionar os models na route
+>>> from HedgePanel.models import CDI_CETIP
+
+- Olha que engraçado, quando tentamos dar um query no database ele dá pau
+ValueError: Couldn't parse datetime string: '2012-08-21'
+- Isso acontece pois no model mandamos ele importar como DateTime. Para resolver essa perrenga resolvi colocar no model pra importar como String e não deu pau.
+	data = db.Column(db.String, unique=True, nullable=False)
+
+>>> x = CDI_CETIP.query.all()
+>>> x
+_CETIP('2018-05-04': '6.3900000000'), CDI_CETIP('2018-05-07': '6.3900000000'), CDI_CETIP('2018-05-08': '6.3900000000'), CDI_CETIP('2018-05-09': '6.3900000000'), CDI_CETIP('2018-05-10': '6.3900000000'), CDI_CETIP('2018-05-11': '6.3900000000'), CDI_CETIP('2018-05-14': '6.3900000000'), CDI_CETIP('2018-05-15': '6.3900000000'), CDI_CETIP('2018-05-16': '6.3900000000'), CDI_CET
+- esse retorno é dado por causa da __repr__ do model. Para acessar os valores, usar índice
+>>> x[0].data
+'2012-08-21'
+>>> x[0].valor
+Decimal('7.8200000000')
+- Uma maneira de contornar esse decimal é ler como String no model.
+- Engraçado que lendo como String ele joga pro python como float. Vai entender...
+
+- A data ele está lendo como String, portanto precisamos converter para data. Para isso usaremos a biblioteca "datetime" que vem junto com o python
+https://docs.python.org/3/library/datetime.html
+	Um problema inicial é que datetime sempre insistia em tentar representar hora e minuto
+	>>> dt = datetime.strptime("1984/01/12", "%Y/%m/%d")
+	datetime.datetime(1984, 1, 12, 0, 0)
+
+	# transforma de string para data
+	>>> dt = datetime.strptime("1984/01/12", "%Y/%m/%d").date()
+	datetime.date(1984, 1, 12) # o código da linha acima resolveu
+
+	- preciso agora saber que padrão é aquela data que é um numero grandão
+	- Matei a charada! O highcharts trabalha com tempo em milisegundos
+	[
+		1168473600000,
+		0.7703
+	],
+	- Mas o UNIX timestamp clássico trabalha com segundos... portanto basta cortar 3 zeros.
+	ts = date.fromtimestamp(1168473600)
+	datetime.date(2007, 1, 10)
+
+	- A função date.fromtimestamp() cria uma data em dia só com os segundos. Precisamos de uma função para fazer o contrário
+
+	- A UNIX timestamp também é chamada de POSIC
+	- Existe datetime.timestamp() mas não existe date.timestamp() duh!
+	- Calma. Como sabemos obter um timestamp de um datetime basta aprendermos a converter de datetime para date e de date para datetime
+		antes damos um
+		from datetime import datetime, date
+		- Conversão datetime->date
+			myDate = myDateTime.date()
+		- Conversão date->datetime
+			myDateTime = datetime.combine(myDate, datetime.min.time())
+			int(datetime.combine(dt, datetime.min.time()).timestamp()) é melhor ainda
+			# crédito para https://stackoverflow.com/questions/1937622/convert-date-to-datetime-in-python
+
+- Depois desta saga toda com datas e POSIX, vamos voltar à tarefa que era ler os dados no banco de dados e jogar no BD
+
+- O seguinte código transforma uma query do banco de dados em uma list of lists com data em POSIX. Ficou uma salada de cebola.
+
+z = CDI_CETIP.query.all()
+n = len(z)
+
+dados = [[0,0] for i in range(n)]
+
+for i in range(n):
+	dt = datetime.strptime(z[i].data, "%Y-%m-%d").date()
+	dt = int(datetime.combine(dt, datetime.min.time()).timestamp())
+	dados[i][0] = dt
+	dados[i][1] = z[i].valor
+
+- Um dos próximos passos seria estruturar tudo que vc aprendeu.

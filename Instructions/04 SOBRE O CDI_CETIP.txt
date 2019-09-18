@@ -1,0 +1,11 @@
+- CDI Cetip é a taxa média do CDI no dia, calculado pela CETIP. Cada dia tem um valor.
+
+- O valor pode ser encontrado em
+ftp://ftp.cetip.com.br/ # o ftp tem muita coisa legal
+- O CDI em específico se encontra em 
+ftp://ftp.cetip.com.br/MediaCDI/
+	lá tem vários arquivos .txt desde 20/08/2012.
+	o formato do link dos arquivos é
+	ftp://ftp.cetip.com.br/MediaCDI/20120820.txt
+
+- O ideal seria ter uma função no qual você passa a data e ela retorna o CDI
