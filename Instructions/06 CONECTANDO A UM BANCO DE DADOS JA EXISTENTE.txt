@@ -122,3 +122,4 @@ for i in range(n):
 	dados[i][1] = z[i].valor
 
 - Um dos próximos passos seria estruturar tudo que vc aprendeu.
+- Usar o .gitignore

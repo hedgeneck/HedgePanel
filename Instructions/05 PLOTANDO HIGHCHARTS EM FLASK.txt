@@ -117,3 +117,40 @@ var cars = ["Saab", "Volvo", "BMW"];		   // Array of strings
 var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"}; // Object
 var cars = new Array("Saab", "Volvo", "BMW"); // Array
 
+- Aquele label lá embaixo me encomodou muito.
+series = [{"name": 'Label Gu', "data": dados}]
+- Tentei tirar o atributo "name" mas aí ficava aparecendo "Series 1"
+- Colocando o name da series como '' ainda aparece um tracinho sem nada
+- Para resolver esse problema de legenda foi complicado pois apesar de saber que basta adicionar 
+	legend: { enabled: false } (aprendi no exemplo line-time-series do highcharts)
+...é complicado pois na aplicação Flask foi feita de maneira diferente. Aparece código de highcharts em 3 partes diferentes:
+	. dentro de routes.py
+	. dentro do <script> na declaração de variáveis
+	. dentro da chamada da função highcharts em js.
+- A solução foi:
+	. deixar routes como estava
+	. adicionar var legend = {'enabled': false} nos <script>
+	. adicionar legend: legend na chamada da função.
+
+- Fazer um gráfico aparecer é 50% do trabalho, os outros 50% são ajustar os detalhes
+- Arrumar texto do eixo Y
+    yAxis: { title: { text: 'Temperature (°C)' } }
+    engraçado como é um title: seguido de um text: mas deixa pra lá
+
+- Fazer tooltip aparecer em %
+- Tirar hora do tooltip
+- A melhor maneira de aprender os parâmetros do highcharts é editando exemplos com fiddles
+https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/tooltip/footerformat/
+https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/tooltip/pointformat/
+
+Notar como
+	var tooltip = {'valueSuffix': ' %'} e 
+	var tooltip = {valueSuffix: ' %'} dão no mesmo
+
+Dá pra ir a fundo em edição de tooltips,
+	headerFormat
+	The HTML of the tooltip header line. Variables are enclosed by curly brackets. Available variables are point.key, series.name, series.color and other members from the point and series objects. The point.key variable contains the category name, x value or datetime string depending on the type of axis. For datetime axes, the point.key date format can be set using tooltip.xDateFormat.
+	Defaults to <span style="font-size: 10px">{point.key}</span><br/>.
+
+Dá pra mudar o highcharts.com?
+

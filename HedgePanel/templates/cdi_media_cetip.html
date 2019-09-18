@@ -10,6 +10,12 @@
 			var xAxis = {{ xAxis|safe }}
 			var yAxis = {{ yAxis|safe }}
 			var chart = {{ chart|safe }}
+			var legend = {enabled: false}
+			var tooltip = {valueSuffix: ' %',
+							xDateFormat: '%d-%m-%Y'}
+			var credits = {text: 'hedgepanel.com.br',
+        					href: 'http://www.hedgepanel.com.br'
+    }
 		</script>
 {% endblock content %}
 
@@ -22,7 +28,10 @@
 				title: title,
 				xAxis: xAxis,
 				yAxis: yAxis,
-				series: series
+				series: series,
+				legend: legend,
+				tooltip: tooltip,
+				credits: credits
 			});
 		});
 	</script>
