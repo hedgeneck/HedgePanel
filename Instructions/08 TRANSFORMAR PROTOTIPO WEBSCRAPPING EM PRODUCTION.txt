@@ -1,0 +1,67 @@
+- O objetivo aqui é pegar um protótipo de leitura que foi elaborado para ler vertices de contratos DI e jogar no banco de dados.
+- Tomaremos CETIP_CDI como exemplo
+
+- Primeiramente vale a pena pensar no banco de dados se vai ser uma linha por data ou se cada data vai ter mais de uma linha.
+	no caso do CDI tem uma data por linha
+	no caso dos contratos DI, são vários contratos por data
+
+- Lembrar que o processo é basicamente rodar uma funçãozona (CARGA_BDM.R) que se conecta ao banco de dados e vai chamando funções menores para cada tarefa, como atualizar.CETIP.CDI() que se encontra no arquivo CETIP_CDI.R Tendo isso em mente iremos esquecer por enquanto o arquivo CARGA_BDM e nos concentrar no arquivo menor em si
+	CARGA_BDM: arquivo chamador, mais genérica
+	CETIP_CDI: arquivo chamado, mais específico
+
+- A primeira coisa é pensar no nome. Como se trata de Contratos DI que são negociados na bovespa, pensei em B3_CONTRATOS_DI.R
+Esse script vai suppor algumas coisas que já foram feitas no arquivo que o chamou (CARGA_BDM) como: 
+	- A biblioteca RSQLite já foi importada
+	- já temos uma conexão ao banco de dados chamada conn
+	- A biblioteca para manipulação de datas bizdays já foi importada (embora ela não seja usada diretamente)
+	- A função dias.uteis.desde() já foi definida
+
+Nota: as funções que serão compartilhadas pelos diversos scripts específicos devem ir no arquivo chamados (CARGA_BDM). As funções mais específicas como: ultima.data.CETIP.CDI(), que vê qual a última data em que a tabela CETIP_CDI foi atualizada, devem ir no arquivo mais específico
+
+- Cada arquivo específico vai ser dividido em algumas funções
+	ler.CETIP.CDI(): recebe uma data específica, tenta ler o CDI da data no site, se não der pra ler para com "erro ao ler", transforma os dados lidos de str para um formato amigável (numeric, dataframe), se for dataframe formata direitinho cada coluna e retorna
+	carregar.CETIP.CDI(): lê o dado com a função acima, tenta carregar o CDI no banco de dados, se não der pra carregar para com "erro ao carregar"
+	ultima.data.CETIP.CDI(): vê qual foi a última data em que o banco de dados foi carregado que vai ser usado na função a seguir
+	atualizar.CETIP.CDI(): calcula quais dias uteis desde a ultima atualização [usando a função específica ultima.data e a genérica dias.uteis.desde], ve se tem alguma coisa a ser feita e então vai atualizando se tiver.
+
+- Para projetar o banco de dados, abre primeiro o resultado da função ler
+		> x = ler.B3.CONTRATOS.DI(as.Date("2019-09-06"))
+		> str(x)
+		'data.frame':	37 obs. of  5 variables:
+		 $ Vencimento : chr  "V19" "X19" "Z19" "F20" ...
+		 $ PA_Anterior: num  99627 99148 98750 98338 97910 ...
+		 $ PA_Atual   : num  99628 99149 98751 98343 97923 ...
+		 $ Variacao   : num  0.27 1.83 1.63 5.5 13.03 ...
+		 $ VAPC       : num  0.27 1.83 1.63 5.5 13.03 ...
+	Em seguida:
+	- Abre o banco de dados
+	- Se conecta a storage.db
+	- Vai em Tables, clica com o direito > Create Table
+	- Nome: B3_CONTRATOS_DI
+		- Id: Integer, primary key, auto-increment
+		- Vencimento: String, not null
+		- PA_Anterior: Real, not null
+		- PA_Atual: Real, not null
+		- Variação: Real, not null
+		- VAPC: Real, not null
+		- data: Date, not null
+
+- Uma sugestão de fluxo de trabalho é
+	1 - escrever a função ler.
+	2 - projetar e criar a tabela do banco de dados
+	3 - escrever a função carregar
+	4 - escrever a função última data
+	5 - escrever a função atualizar
+
+
+
+- Sobre o banco de dados ainda não entendi porque data tem que ir em string
+
+ERROS
+erro ao ler contratos DI para a data 2018-01-25
+erro ao ler contratos DI para a data 2018-07-09
+erro ao ler contratos DI para a data 2018-11-20
+erro ao ler contratos DI para a data 2018-12-24
+erro ao ler contratos DI para a data 2018-12-31
+erro ao ler contratos DI para a data 2019-01-25
+erro ao ler contratos DI para a data 2019-07-09

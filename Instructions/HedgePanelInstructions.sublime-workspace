@@ -11,6 +11,42 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "03 CARREGAR BANCO DE DADOS COM CDI.txt",
+			"settings":
+			{
+				"buffer_size": 3418,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "06 CONECTANDO A UM BANCO DE DADOS JA EXISTENTE.txt",
+			"settings":
+			{
+				"buffer_size": 5837,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "07 WEBSCRAPPING PAGINA DERIVATIVOS DI.txt",
+			"settings":
+			{
+				"buffer_size": 2215,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "05 PLOTANDO HIGHCHARTS EM FLASK.txt",
+			"settings":
+			{
+				"buffer_size": 6533,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -56,7 +92,10 @@
 	],
 	"file_history":
 	[
+		"/C/Projetos/HedgePanel/Instructions/04 SOBRE O CDI_CETIP.txt",
+		"/C/Projetos/HedgePanel/Instructions/05 PLOTANDO HIGHCHARTS EM FLASK.txt",
 		"/C/Projetos/HedgePanel/Instructions/01 BASICAO.txt",
+		"/C/Projetos/HedgePanel/Instructions/02 COLOCAR BOOTSTRAP E BASE DO FRONT.txt",
 		"/C/Projetos/blog/Instructions/AULA 05 - ESTRUTURANDO COMO PACKAGE.txt",
 		"/C/Projetos/blog/Instructions/AULA 04 - DATABASE WITH SQLALCHEMY.txt",
 		"/C/Projetos/blog/Instructions/AULA 01 - BASICAO.txt",
@@ -180,10 +219,7 @@
 		"/C/Projetos/Timeline/app/Timeline.php",
 		"/C/Projetos/Timeline/resources/views/timelines/show.blade.php",
 		"/C/Projetos/Timeline/resources/views/pontos/create.blade.php",
-		"/C/Users/Gustavo/Desktop/OPTRADE/Cursos/The PHP Practitioner/04/index.php",
-		"/C/Users/Gustavo/Desktop/OPTRADE/Cursos/The PHP Practitioner/02/index.php",
-		"/C/Projetos/Timeline/resources/views/timelines/index.blade.php",
-		"/C/Projetos/Timeline/database/migrations/2019_01_27_192753_create_pontos_table.php"
+		"/C/Users/Gustavo/Desktop/OPTRADE/Cursos/The PHP Practitioner/04/index.php"
 	],
 	"find":
 	{
@@ -227,8 +263,122 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "03 CARREGAR BANCO DE DADOS COM CDI.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3418,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1422,
+								1014
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "06 CONECTANDO A UM BANCO DE DADOS JA EXISTENTE.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5837,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4983,
+								4983
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1539.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "07 WEBSCRAPPING PAGINA DERIVATIVOS DI.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1631,
+								1631
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "05 PLOTANDO HIGHCHARTS EM FLASK.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6533,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6531,
+								6531
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1831.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],

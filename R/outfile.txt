@@ -1,0 +1,332 @@
+<tr> 
+					<td>DI1   - DI de 1 dia                                       </td>
+					<td class="text-center">V19 </td>
+					<td class="text-right">99.719,11</td>
+					<td class="text-right">99.719,06</td>
+					<td class="text-right">-0,05</td>
+					<td class="text-right">0,05</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">X19 </td>
+					<td class="text-right">99.240,78</td>
+					<td class="text-right">99.241,95</td>
+					<td class="text-right">1,17</td>
+					<td class="text-right">1,17</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">Z19 </td>
+					<td class="text-right">98.844,60</td>
+					<td class="text-right">98.849,55</td>
+					<td class="text-right">4,95</td>
+					<td class="text-right">4,95</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F20 </td>
+					<td class="text-right">98.436,62</td>
+					<td class="text-right">98.444,40</td>
+					<td class="text-right">7,78</td>
+					<td class="text-right">7,78</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">G20 </td>
+					<td class="text-right">98.015,97</td>
+					<td class="text-right">98.020,86</td>
+					<td class="text-right">4,89</td>
+					<td class="text-right">4,89</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">H20 </td>
+					<td class="text-right">97.661,23</td>
+					<td class="text-right">97.673,87</td>
+					<td class="text-right">12,64</td>
+					<td class="text-right">12,64</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">J20 </td>
+					<td class="text-right">97.242,56</td>
+					<td class="text-right">97.257,86</td>
+					<td class="text-right">15,30</td>
+					<td class="text-right">15,30</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">K20 </td>
+					<td class="text-right">96.842,98</td>
+					<td class="text-right">96.861,99</td>
+					<td class="text-right">19,01</td>
+					<td class="text-right">19,01</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">M20 </td>
+					<td class="text-right">96.446,79</td>
+					<td class="text-right">96.469,10</td>
+					<td class="text-right">22,31</td>
+					<td class="text-right">22,31</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">N20 </td>
+					<td class="text-right">96.051,84</td>
+					<td class="text-right">96.078,34</td>
+					<td class="text-right">26,50</td>
+					<td class="text-right">26,50</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">Q20 </td>
+					<td class="text-right">95.599,55</td>
+					<td class="text-right">95.629,28</td>
+					<td class="text-right">29,73</td>
+					<td class="text-right">29,73</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">U20 </td>
+					<td class="text-right">95.167,79</td>
+					<td class="text-right">95.200,49</td>
+					<td class="text-right">32,70</td>
+					<td class="text-right">32,70</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">V20 </td>
+					<td class="text-right">94.735,22</td>
+					<td class="text-right">94.770,88</td>
+					<td class="text-right">35,66</td>
+					<td class="text-right">35,66</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F21 </td>
+					<td class="text-right">93.408,57</td>
+					<td class="text-right">93.452,91</td>
+					<td class="text-right">44,34</td>
+					<td class="text-right">44,34</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">J21 </td>
+					<td class="text-right">92.041,87</td>
+					<td class="text-right">92.094,44</td>
+					<td class="text-right">52,57</td>
+					<td class="text-right">52,57</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">N21 </td>
+					<td class="text-right">90.586,62</td>
+					<td class="text-right">90.677,99</td>
+					<td class="text-right">91,37</td>
+					<td class="text-right">91,37</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">V21 </td>
+					<td class="text-right">89.028,18</td>
+					<td class="text-right">89.114,16</td>
+					<td class="text-right">85,98</td>
+					<td class="text-right">85,98</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F22 </td>
+					<td class="text-right">87.507,19</td>
+					<td class="text-right">87.602,39</td>
+					<td class="text-right">95,20</td>
+					<td class="text-right">95,20</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">J22 </td>
+					<td class="text-right">86.017,29</td>
+					<td class="text-right">86.121,14</td>
+					<td class="text-right">103,85</td>
+					<td class="text-right">103,85</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">N22 </td>
+					<td class="text-right">84.483,78</td>
+					<td class="text-right">84.595,85</td>
+					<td class="text-right">112,07</td>
+					<td class="text-right">112,07</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">V22 </td>
+					<td class="text-right">82.890,92</td>
+					<td class="text-right">83.011,20</td>
+					<td class="text-right">120,28</td>
+					<td class="text-right">120,28</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F23 </td>
+					<td class="text-right">81.392,19</td>
+					<td class="text-right">81.545,15</td>
+					<td class="text-right">152,96</td>
+					<td class="text-right">152,96</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">J23 </td>
+					<td class="text-right">79.863,73</td>
+					<td class="text-right">80.025,25</td>
+					<td class="text-right">161,52</td>
+					<td class="text-right">161,52</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">N23 </td>
+					<td class="text-right">78.423,22</td>
+					<td class="text-right">78.536,83</td>
+					<td class="text-right">113,61</td>
+					<td class="text-right">113,61</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">V23 </td>
+					<td class="text-right">76.892,25</td>
+					<td class="text-right">77.040,31</td>
+					<td class="text-right">148,06</td>
+					<td class="text-right">148,06</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F24 </td>
+					<td class="text-right">75.478,78</td>
+					<td class="text-right">75.663,14</td>
+					<td class="text-right">184,36</td>
+					<td class="text-right">184,36</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">J24 </td>
+					<td class="text-right">74.196,73</td>
+					<td class="text-right">74.381,80</td>
+					<td class="text-right">185,07</td>
+					<td class="text-right">185,07</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">N24 </td>
+					<td class="text-right">72.751,82</td>
+					<td class="text-right">72.933,48</td>
+					<td class="text-right">181,66</td>
+					<td class="text-right">181,66</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F25 </td>
+					<td class="text-right">69.911,94</td>
+					<td class="text-right">70.087,87</td>
+					<td class="text-right">175,93</td>
+					<td class="text-right">175,93</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">N25 </td>
+					<td class="text-right">67.498,51</td>
+					<td class="text-right">67.691,03</td>
+					<td class="text-right">192,52</td>
+					<td class="text-right">192,52</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F26 </td>
+					<td class="text-right">64.708,94</td>
+					<td class="text-right">64.921,40</td>
+					<td class="text-right">212,46</td>
+					<td class="text-right">212,46</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">N26 </td>
+					<td class="text-right">62.562,58</td>
+					<td class="text-right">62.791,55</td>
+					<td class="text-right">228,97</td>
+					<td class="text-right">228,97</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F27 </td>
+					<td class="text-right">59.805,55</td>
+					<td class="text-right">60.052,90</td>
+					<td class="text-right">247,35</td>
+					<td class="text-right">247,35</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F28 </td>
+					<td class="text-right">55.212,03</td>
+					<td class="text-right">55.407,09</td>
+					<td class="text-right">195,06</td>
+					<td class="text-right">195,06</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F29 </td>
+					<td class="text-right">50.971,13</td>
+					<td class="text-right">51.106,25</td>
+					<td class="text-right">135,12</td>
+					<td class="text-right">135,12</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F30 </td>
+					<td class="text-right">47.198,96</td>
+					<td class="text-right">47.337,20</td>
+					<td class="text-right">138,24</td>
+					<td class="text-right">138,24</td>
+				</tr>
+            			
+				<tr> 
+					<td></td>
+					<td class="text-center">F31 </td>
+					<td class="text-right">43.709,81</td>
+					<td class="text-right">43.850,12</td>
+					<td class="text-right">140,31</td>
+					<td class="text-right">140,31</td>
+				</tr>

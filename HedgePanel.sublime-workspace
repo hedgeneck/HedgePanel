@@ -11,6 +11,33 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "HedgePanel/routes.py",
+			"settings":
+			{
+				"buffer_size": 1075,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "HedgePanel/templates/cdi_media_cetip.html",
+			"settings":
+			{
+				"buffer_size": 968,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "HedgePanel/models.py",
+			"settings":
+			{
+				"buffer_size": 308,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -52,13 +79,39 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Projetos/HedgePanel"
+		"/C/Projetos/HedgePanel",
+		"/C/Projetos/HedgePanel/HedgePanel",
+		"/C/Projetos/HedgePanel/HedgePanel/static",
+		"/C/Projetos/HedgePanel/HedgePanel/static/js",
+		"/C/Projetos/HedgePanel/HedgePanel/templates",
+		"/C/Projetos/HedgePanel/R"
 	],
 	"file_history":
 	[
+		"/C/Projetos/HedgePanel/HedgePanel/__init__.py",
+		"/C/Projetos/HedgePanel/HedgePanel/routes.py",
+		"/C/Projetos/HedgePanel/HedgePanel/templates/layout.html",
+		"/C/Projetos/HedgePanel/HedgePanel/templates/grafico_2.html",
+		"/C/Projetos/HedgePanel/HedgePanel/models.py",
+		"/C/Projetos/HedgePanel/HedgePanel/templates/grafico_1.html",
+		"/C/Projetos/HedgePanel/HedgePanel/static/js/main.js",
+		"/C/Projetos/HedgePanel/HedgePanel/templates/highcharts_example.html",
+		"/C/Projetos/HedgePanel/testes/06_function_random_walk.py",
+		"/C/Projetos/HedgePanel/testes/01_numeros_aleatorios.py",
+		"/C/Projetos/HedgePanel/testes/04_algumas_coisas_numericas.py",
+		"/C/Projetos/HedgePanel/testes/05_random_wak_caseiro.txt",
+		"/C/Projetos/HedgePanel/testes/03_random_walk_2d.py",
+		"/C/Projetos/HedgePanel/testes/02_random_walk_2d.py",
+		"/C/Projetos/HedgePanel/testes/teste.py",
+		"/C/Projetos/blog/blog/routes.py",
+		"/C/Projetos/HedgePanel/HedgePanel/static/main.css",
+		"/C/Projetos/HedgePanel/HedgePanel/templates/about.html",
+		"/C/Projetos/HedgePanel/HedgePanel/static/main.js",
+		"/C/Projetos/HedgePanel/run.py",
+		"/C/Projetos/HedgePanel/HedgePanel/templates/home.html",
+		"/C/Projetos/HedgePanel/HedgePanel/forms.py",
 		"/C/Projetos/blog/blog/__init__.py",
 		"/C/Projetos/blog/run.py",
-		"/C/Projetos/blog/blog/routes.py",
 		"/C/Projetos/blog/blog.py",
 		"/C/Projetos/blog/models.py",
 		"/C/Projetos/blog/blog/models.py",
@@ -162,28 +215,7 @@
 		"/C/Projetos/Timeline/vendor/symfony/http-foundation/Request.php",
 		"/C/Projetos/Timeline/instructions/12 CRIAR REGISTRATION SYSTEM.txt",
 		"/C/Projetos/Timeline/database/migrations/2019_02_03_205930_create_timelines_table.php",
-		"/C/Projetos/Timeline/app/Http/Controllers/Auth/LoginController.php",
-		"/C/Projetos/Timeline/vendor/laravel/framework/src/Illuminate/Support/Facades/Gate.php",
-		"/C/Projetos/Timeline/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php",
-		"/C/Projetos/Timeline/app/Http/Controllers/HomeController.php",
-		"/C/Projetos/Timeline/app/Http/Controllers/PontosController.php",
-		"/C/Projetos/Timeline/app/Ponto.php",
-		"/C/Projetos/Timeline/vendor/laravel/framework/src/Illuminate/Support/Facades/App.php",
-		"/C/Projetos/Timeline/app/Http/Middleware/CheckForMaintenanceMode.php",
-		"/C/Users/Gustavo/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
-		"/C/Users/Gustavo/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
-		"/C/Projetos/Timeline/resources/views/timelines/edit.blade.php",
-		"/C/Projetos/Timeline/database/migrations/2014_10_12_000000_create_users_table.php",
-		"/C/Projetos/test/database/migrations/2014_10_12_000000_create_users_table.php",
-		"/C/Projetos/test/app/Http/Controllers/Auth/RegisterController.php",
-		"/C/Projetos/test/routes/web.php",
-		"/C/Projetos/Timeline/resources/views/pontos/edit.blade.php",
-		"/C/Projetos/Timeline/bootstrap/app.php",
-		"/C/Projetos/Timeline/instructions/11 ENTRANHAS DO LARAVEL.txt",
-		"/C/Projetos/Timeline/app/Console/Kernel.php",
-		"/C/Projetos/Timeline/routes/console.php",
-		"/C/Projetos/Timeline/app/Http/Kernel.php",
-		"/C/Projetos/Timeline/instructions/10 REWRITTING THE PROGRAM INTERFACE TO ADD RELATIONSHIP.txt"
+		"/C/Projetos/Timeline/app/Http/Controllers/Auth/LoginController.php"
 	],
 	"find":
 	{
@@ -230,8 +262,95 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "HedgePanel/routes.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1075,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								940,
+								940
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "HedgePanel/templates/cdi_media_cetip.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 968,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								800,
+								800
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "HedgePanel/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 308,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								216,
+								216
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],

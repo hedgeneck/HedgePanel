@@ -30,4 +30,5 @@ source("CETIP_CDI.R")
 
 conn = conectar.bdm()
 atualizar.CETIP.CDI()
+atualizar.B3.CONTRATOS.DI()
 dbDisconnect(conn)

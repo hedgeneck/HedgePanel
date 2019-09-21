@@ -1,0 +1,181 @@
+- A página em questão com todos contratos derivativos é
+http://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/derivativos/ajustes-do-pregao/
+- Ela sempre abre com os dados do último pregão que já foi finalizado.
+- Como queremos não apenas os dados do último pregão, mas de vários pregões, precisamos analisar melhor o site para ver qual estrutura ele usa. O site é baseado em requisições do tipo POST.
+- Ver a aula 3.03 sobre requisições POST.
+- A requisição POST do site não está indo muito bem, analisando o inspecionar aba network vemos que a requisição é enviada com campo dData1, mas a data não está indo legal e o script em R teste.R não está funcionando, a requisição r não está retornando nenhum texto
+
+- A função content() estava dando problema e reclamava do encoding. Quando eu colocava UTF-8 ele não retornava nada como texto. Acontece que o site em questão 
+http://www2.bmf.com.br/pages/portal/bmfbovespa/lumis/lum-ajustes-do-pregao-ptBR.asp
+possuía encoding "iso-8859-1"
+
+
+- testar se taxas referenciais bate com contratos DI
+http://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/mercado-de-derivativos/precos-referenciais/taxas-referenciais-bm-fbovespa/
+- o site da anbima de dados tem muita coisa legal também
+
+
+file:///C:/Users/Gustavo/Desktop/Bolsa/Manual_de_Acesso_a_Infraestrutura_Tecnologica_da_BMFBOVESPA_V7.pdf
+
+Taxa utilizada na apuração do risco de crédito das operações de swap, de que tratam a Resolução 2399/97 e a Circular 2771/97, do Bacen.?
+Pra que serve o Line 5.0?
+O que é um MIME type?
+Na Post request qual deve ser a encoding?
+
+Tentar entender exatamente o que acontece em requisições
+https://stackoverflow.com/questions/14551194/how-are-parameters-sent-in-an-http-post-request
+
+
+*** FAZER UMA REQUISIÇÃO GET
+- A base para compreender é a aula 3.2
+
+*** CONSULTANDO POR CONTA O USO DE HTTR
+https://cran.r-project.org/web/packages/httr/httr.pdf # o sheet da library
+https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html # uma maneira bem fácil de começar pelos basics
+https://stackoverflow.com/questions/27371372/httr-retrieving-data-with-post
+
+
+- O grande problema é como passar a data no campo
+
+- Tem que se concentrar no webscrapping da página
+
+- Eu tinha gasto um tempão sem conseguir fazer a requisição POST e a solução foi apenas adicionar encode = "form" como parâmetro da POST()
+
+https://www.rdocumentation.org/packages/httr/versions/1.4.1/topics/POST
+https://itnext.io/regular-expressions-tricks-you-should-know-2976c7bd1be3
+- Tem um resumo de expressões regulares num pdf numa pasta do curso
+
+- Lembrar que dentro do R para significar \ literalmente eu preciso de duas barras. Esse problema não acontece com o / eg: dData1 = "11/09/2019" ),
+- Pro R, \n significa alguma coisa, por isso não precisa dobrar a barra. Por outro lado, \s, \d, \w, \t não significam nada pro R e portanto precisamos dobrar as barras.
+
+
+<tr>\s*<td>DI1[^<]*</td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>
+
+<tr>\s*<td>DI1[^<]*</td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>\s*[<tr>\s*<td></td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>]
+
+
+<tr>\s*<td>DI1[^<]*</td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>
+\s*<tr>\s*<td></td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>
+\s*<tr>\s*<td></td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>
+
+<tr>\s*<td>DI1[^<]*</td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>
+(\s*<tr>\s*<td></td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>)*
+
+<tr>\s*<td>DI1[^<]*</td>\s* #primeiro TD com nome do ativo sendo DI
+<td[^>]*>[A-Z]\d{2}[^<]</td>\s* # segundo TD contendo Vencimento
+<td[^>]*>[\d.,]*</td>\s* # terceiro TD com Preço de Ajuste Anterior
+<td[^>]*>[\d.,]*</td>\s* # quarto TD contendo Preço de Ajuste Atual
+<td[^>]*>[\d.,]*</td>\s* # quinto TD contendo Variação
+<td[^>]*>[\d.,]*</td>\s*</tr> # Valor do Ajuste por Contrato
+
+(\s*<tr>\s*<td></td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>)*
+
+
+
+- Em R o código do pattern fica
+pattern = paste0(
+  "<tr>\s*<td>DI1[^<]*</td>\s*", #primeiro TD com nome do ativo sendo DI
+  "<td[^>]*>[A-Z]\d{2}[^<]</td>\s*", # segundo TD contendo Vencimento
+  "<td[^>]*>[\d.,]*</td>\s*", # terceiro TD com Preço de Ajuste Anterior
+  "<td[^>]*>[\d.,]*</td>\s*", # quarto TD contendo Preço de Ajuste Atual
+  "<td[^>]*>[\d.,]*</td>\s*", # quinto TD contendo Variação
+  "<td[^>]*>[\d.,]*</td>\s*</tr>" # Valor do Ajuste por Contrato
+)
+
+- ajustado com o double escaping de alguns elementos..
+pattern = paste0(
+  "<tr>\\s*<td>DI1[^<]*</td>\\s*", #primeiro TD com nome do ativo sendo DI
+  "<td[^>]*>[A-Z]\\d{2}[^<]</td>\\s*", # segundo TD contendo Vencimento
+  "<td[^>]*>[\\d.,]*</td>\\s*", # terceiro TD com Preço de Ajuste Anterior
+  "<td[^>]*>[\\d.,]*</td>\\s*", # quarto TD contendo Preço de Ajuste Atual
+  "<td[^>]*>[\\d.,]*</td>\\s*", # quinto TD contendo Variação
+  "<td[^>]*>[\\d.,]*</td>\\s*</tr>" # Valor do Ajuste por Contrato
+)
+
+- regexp tirada do sublime que coleta tudo
+<tr>\s*<td>DI1[^<]*</td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*<td[^>]*>[\d.,]*</td>\s*</tr>
+(\s*<tr>\s*<td></td>\s* <td[^>]*>[A-Z]\d{2}[^<]</td>\s* <td[^>]*>[\d.,]*</td>\s* <td[^>]*>[\d.,]*</td>\s* <td[^>]*>[\d.,]*</td>\s* <td[^>]*>[\d.,]*</td>\s*</tr>)*
+
+- ampliar o pattern
+pattern = paste0(
+  "<tr>\\s*<td>DI1[^<]*</td>\\s*", #primeiro TD com nome do ativo sendo DI
+  "<td[^>]*>[A-Z]\\d{2}[^<]</td>\\s*", # segundo TD contendo Vencimento
+  "<td[^>]*>[\\d.,]*</td>\\s*", # terceiro TD com Preço de Ajuste Anterior
+  "<td[^>]*>[\\d.,]*</td>\\s*", # quarto TD contendo Preço de Ajuste Atual
+  "<td[^>]*>[\\d.,]*</td>\\s*", # quinto TD contendo Variação
+  "<td[^>]*>[\\d.,]*</td>\\s*</tr>", # Valor do Ajuste por Contrato
+  "(\\s*<tr>\\s*<td></td>\\s*", #Começa segunda série de TD, sem nada
+  "<td[^>]*>[A-Z]\\d{2}[^<]</td>\\s*", # Vencimento
+  "<td[^>]*>[\\d.,]*</td>\\s*", # TD com Preço de Ajuste Anterior
+  "<td[^>]*>[\\d.,]*</td>\\s*", # TD contendo Preço de Ajuste Atual
+  "<td[^>]*>[\\d.,]*</td>\\s*", # TD contendo Variação
+  "<td[^>]*>[\\d.,]*</td>\\s*</tr>)*" # Valor do Ajuste por Contrato
+)
+
+- pesquisa regexp no sublime com bug
+<tr>\s*<td>DI1[^<]*</td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*</tr>
+(\s*<tr>\s*<td></td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*</tr>)*
+
+- pesquisa regexp no sublime com bug resolvido: faltava o sinal de -
+<tr>\s*<td>DI1[^<]*</td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*</tr>
+(\s*<tr>\s*<td></td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*</tr>)*
+
+- função meio que funcionando
+pattern = paste0(
+  "<tr>\\s*<td>DI1[^<]*</td>\\s*", #primeiro TD com nome do ativo sendo DI
+  "<td[^>]*>[A-Z]\\d{2}[^<]</td>\\s*", # segundo TD contendo Vencimento
+  "<td[^>]*>[\\d.,-]*</td>\\s*", # terceiro TD com Preço de Ajuste Anterior
+  "<td[^>]*>[\\d.,-]*</td>\\s*", # quarto TD contendo Preço de Ajuste Atual
+  "<td[^>]*>[\\d.,-]*</td>\\s*", # quinto TD contendo Variação
+  "<td[^>]*>[\\d.,-]*</td>\\s*</tr>", # Valor do Ajuste por Contrato
+  "(\\s*<tr>\\s*<td></td>\\s*", #Começa segunda série de TD, sem nada
+  "<td[^>]*>[A-Z]\\d{2}[^<]</td>\\s*", # Vencimento
+  "<td[^>]*>[\\d.,-]*</td>\\s*", # TD com Preço de Ajuste Anterior
+  "<td[^>]*>[\\d.,-]*</td>\\s*", # TD contendo Preço de Ajuste Atual
+  "<td[^>]*>[\\d.,-]*</td>\\s*", # TD contendo Variação
+  "<td[^>]*>[\\d.,-]*</td>\\s*</tr>)*" # Valor do Ajuste por Contrato
+)
+
+https://stringr.tidyverse.org/reference/str_match.html
+https://stringr.tidyverse.org/articles/regular-expressions.html
+
+- Existem basicamente duas funções para o operador (), uma delas é definir precedência e a outra é capturar.
+- Eu estava com problema para capturar algo dentro de uma expressão gigante na qual eu precisava definir precedencia
+Aparentemente a solução do meu problema é com (?:)
+You can use (?:...), the non-grouping parentheses, to control precedence but not capture the match in a group. This is slightly more efficient than capturing parentheses.
+
+essa expressão está coletando espaços em branco
+<tr>\s*<td>[^<]*</td>\s*<td[^>]*>[A-Z]\d{2}[^<]</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*<td[^>]*>[\d.,-]*</td>\s*</tr>
+
+- Tem uma cheat foda da Stringr em
+	https://github.com/rstudio/cheatsheets/blob/master/strings.pdf
+	- str_detect() detecta a presença do padrão e retorna TRUE ou FALSE
+	- str_locate() detecta o padrão e dá o ponto inicial e final
+	- str_extract() retorna o primeiro padrão encontrado
+	- str_extract_all() retorna todos padrões encontrados
+	- str_match() returna primeiro match como matrix com coluna para cada () group
+	- str_match_all retorna todos patrões encontrados com coluna para cada () group
+
+- Finalmente a saga termina. O protótipo do webscrapping está em teste2.R.
+- Na verdade o protótipo só está terminao quando os dados estão em formato dataframe com as colunas bem formatadas e prontinho para ser jogado no banco de dados com a facilidade dos dataframes.
+- Para terminar de formatar o dataframe, colocar bonitinho o nome das colunas
+	colnames(dados) = c("Validade", "PA_Anterior", "PA_Atual", "Variacao", "VAPC")
+- Alguns ajustes comuns em dataframes
+	- Ajustar para formato Date
+	dados$data = as.Date(dados$data, "%d/%m/%y")
+
+
+- Além disso, para dar o protótipo como terminado, é interessante que o código rode bem se for em sequencia. Comenta o que estiver fora da lógica do fluxo.
+
+- O último problema é transformar a list of lists em um dataframe (possivelmente passando por matriz no meio)
+https://stackoverflow.com/questions/29674661/r-list-of-lists-to-data-frame
+
+- Tem que entender o base R antes! Saber a diferença entre um array e um vector..
+
+- Me interessei por tempos de operações, tipo saber se 
+x = f(g(y)) é mais rápido que 
+
+temp = g(y)
+x = f(temp) 
+
+- Se atentar a nome de variáveis em código de produção

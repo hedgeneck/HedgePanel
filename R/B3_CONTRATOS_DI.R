@@ -1,0 +1,103 @@
+library(stringr)
+library(httr)
+
+ler.B3.CONTRATOS.DI = function(dt){
+  stopifnot(is(dt, "Date"), length(dt) == 1)
+  url = "http://www2.bmf.com.br/pages/portal/bmfbovespa/lumis/lum-ajustes-do-pregao-ptBR.asp"
+  response = POST(url, 
+                  body = list(
+                    dData1 = format(dt,"%d/%m/%y") ),
+                  encode = "form")
+  page = content(response, "text", encoding = "iso-8859-1")
+  pattern = paste0(
+    "<tr>\\s*<td>DI1[^<]*</td>\\s*", #primeiro TD com nome do ativo sendo DI
+    "<td[^>]*>[A-Z]\\d{2}[^<]</td>\\s*", # segundo TD contendo Vencimento
+    "<td[^>]*>[\\d.,-]*</td>\\s*", # terceiro TD com Preço de Ajuste Anterior
+    "<td[^>]*>[\\d.,-]*</td>\\s*", # quarto TD contendo Preço de Ajuste Atual
+    "<td[^>]*>[\\d.,-]*</td>\\s*", # quinto TD contendo Variação
+    "<td[^>]*>[\\d.,-]*</td>\\s*</tr>", # Valor do Ajuste por Contrato
+    "(?:\\s*<tr>\\s*<td></td>\\s*", #Começa segunda série de TD, sem nada
+    "<td[^>]*>[A-Z]\\d{2}[^<]</td>\\s*", # Vencimento
+    "<td[^>]*>[\\d.,-]*</td>\\s*", # TD com Preço de Ajuste Anterior
+    "<td[^>]*>[\\d.,-]*</td>\\s*", # TD contendo Preço de Ajuste Atual
+    "<td[^>]*>[\\d.,-]*</td>\\s*", # TD contendo Variação
+    "<td[^>]*>[\\d.,-]*</td>\\s*</tr>)*" # Valor do Ajuste por Contrato
+  )
+  total_exp = str_extract(string = page, pattern = pattern)[[1]]
+  if(is.na(total_exp)){
+    stop(paste0("erro ao ler contratos DI para a data ", dt))
+  }
+  pattern = paste0(
+    "<tr>\\s*<td>[^<]*</td>\\s*", #primeiro TD com nome do ativo sendo DI
+    "<td[^>]*>[A-Z]\\d{2}[^<]</td>\\s*", # segundo TD contendo Vencimento
+    "<td[^>]*>[\\d.,-]*</td>\\s*", # terceiro TD com Preço de Ajuste Anterior
+    "<td[^>]*>[\\d.,-]*</td>\\s*", # quarto TD contendo Preço de Ajuste Atual
+    "<td[^>]*>[\\d.,-]*</td>\\s*", # quinto TD contendo Variação
+    "<td[^>]*>[\\d.,-]*</td>\\s*</tr>*" # Valor do Ajuste por Contrato
+  )
+  parts = as.vector(str_extract_all(string = total_exp, pattern = pattern)[[1]])
+  pattern = paste0(
+    "<tr>\\s*<td>[^<]*</td>\\s*", #primeiro TD com nome do ativo sendo DI
+    "<td[^>]*>([A-Z]\\d{2}[^<])</td>\\s*", # segundo TD contendo Vencimento
+    "<td[^>]*>([\\d.,-]*)</td>\\s*", # terceiro TD com Preço de Ajuste Anterior
+    "<td[^>]*>([\\d.,-]*)</td>\\s*", # quarto TD contendo Preço de Ajuste Atual
+    "<td[^>]*>([\\d.,-]*)</td>\\s*", # quinto TD contendo Variação
+    "<td[^>]*>([\\d.,-]*)</td>\\s*</tr>*" # Valor do Ajuste por Contrato
+  )
+  matches = str_match_all(string = parts, pattern = pattern)
+  matriz = matrix(unlist(matches),nrow=length(matches),byrow=T)
+  dados = data.frame(matriz[,-1], stringsAsFactors = F)
+  
+  colnames(dados) = c("Vencimento", "PA_Anterior", "PA_Atual", "Variacao", "VAPC")
+  
+  dados['Data'] = dt
+  
+  dados$Vencimento = gsub(" ","",dados$Vencimento)
+
+  dados$PA_Anterior = gsub("\\.","",dados$PA_Anterior)
+  dados$PA_Anterior = gsub(",",".",dados$PA_Anterior)
+  dados$PA_Anterior = as.numeric(dados$PA_Anterior)
+  
+  dados$PA_Atual = gsub("\\.","",dados$PA_Atual)
+  dados$PA_Atual = gsub(",",".",dados$PA_Atual)
+  dados$PA_Atual = as.numeric(dados$PA_Atual)
+  
+  dados$Variacao = gsub("\\.","",dados$Variacao)
+  dados$Variacao = gsub(",",".",dados$Variacao)
+  dados$Variacao = as.numeric(dados$Variacao)
+  
+  dados$VAPC = gsub("\\.","",dados$VAPC)
+  dados$VAPC = gsub(",",".",dados$VAPC)
+  dados$VAPC = as.numeric(dados$VAPC)
+  
+  return(dados)
+}
+
+carregar.B3.CONTRATOS.DI = function(dt){
+  dados = ler.B3.CONTRATOS.DI(dt)
+  
+  sql = "INSERT INTO b3_contratos_di (vencimento, pa_anterior, pa_atual, variacao, vapc, data) VALUES (:Vencimento, :PA_Anterior, :PA_Atual, :Variacao, :VAPC, :Data)"
+  r = try(dbSendQuery(conn, sql, params=dates.to.string(dados)))
+  if(!is(r, "try-error")){
+    message("B3_CONTRATOS_DI carregadoS com sucesso para a data ", format(dt, "%Y-%m-%d"))
+    dbClearResult(r)
+  } else {
+    stop("Erro ao carregar B3_CONTRATOS_DI para a data ", format(dt, "%Y-%m-%d"))
+  }
+}
+
+ultima.data.B3.CONTRATOS.DI = function(){
+  dbGetQuery(conn, "SELECT max(data) FROM B3_CONTRATOS_DI")[1,1]
+}
+
+atualizar.B3.CONTRATOS.DI = function(){
+  message("Atualizando B3 CONTRATOS DI...")
+  datas = dias.uteis.desde(ultima.data.B3.CONTRATOS.DI())
+  if(length(datas)==0){
+    message("Nada a ser feito.")
+  } else {
+    for(i in 1:length(datas)){
+      try(carregar.B3.CONTRATOS.DI(datas[i]))
+    }
+  }
+}
